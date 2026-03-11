@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Viewer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #333; }
+    #pdf-container { width: 100%; height: 100vh; }
+    iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+  <div id="pdf-container">
+    <iframe id="viewer"></iframe>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get('file');
+    const page = window.location.hash.replace('#page=', '') || '1';
+    if (file) {
+      const base = 'https://mozilla.github.io/pdf.js/web/viewer.html';
+      document.getElementById('viewer').src =
+        `${base}?file=${encodeURIComponent(location.origin + '/' + location.pathname.replace('viewer.html','') + file)}#page=${page}`;
+    }
+  </script>
+</body>
+</html>
