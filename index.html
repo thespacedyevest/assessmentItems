@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Library</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    h1 { margin-bottom: 24px; }
+    input {
+      width: 100%; padding: 10px; margin-bottom: 20px;
+      font-size: 16px; border: 1px solid #ccc; border-radius: 6px;
+    }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 10px; }
+    li a {
+      display: block; padding: 12px 16px;
+      background: #f5f5f5; border-radius: 6px;
+      text-decoration: none; color: #333;
+    }
+    li a:hover { background: #e0e8ff; }
+    .page-badge {
+      float: right; font-size: 12px;
+      color: #888; margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📄 PDF Library</h1>
+  <input type="text" id="search" placeholder="Search PDFs..." onkeyup="filterList()">
+  <ul id="pdf-list">
+    <!-- EDIT THIS LIST to match your actual PDF filenames -->
+    <li><a href="viewer.html?file=pdfs/document1.pdf#page=1">Document 1</a></li>
+    <li><a href="viewer.html?file=pdfs/document2.pdf#page=1">Document 2</a></li>
+    <li><a href="viewer.html?file=pdfs/document3.pdf#page=1">Document 3</a></li>
+    <!-- Add all 100 PDFs here -->
+  </ul>
+  <script>
+    function filterList() {
+      const query = document.getElementById('search').value.toLowerCase();
+      document.querySelectorAll('#pdf-list li').forEach(li => {
+        li.style.display = li.innerText.toLowerCase().includes(query) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
+https://yourusername.github.io/pdf-library/viewer.html?file=pdfs/document1.pdf#page=4
